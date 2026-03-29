@@ -1,4 +1,3 @@
-// src/components/conversation/ConversationComponents.tsx
 
 import React, { useState, useEffect } from 'react';
 import { Conversation, User } from '../../types/types';
@@ -7,7 +6,6 @@ import { MessageSquare, Plus, Search, MoreVertical, Edit, Trash2, UserPlus, Sett
 import { useAuth } from '../../contexts/AuthContext';
 import apiClient from '../../api/apiClient';
 
-// ConversationListItem Component
 interface ConversationListItemProps {
     conversation: Conversation;
     isSelected: boolean;
@@ -24,7 +22,6 @@ export const ConversationListItem: React.FC<ConversationListItemProps> = ({
     const [loadingParticipants, setLoadingParticipants] = useState(false);
 
     useEffect(() => {
-        // Load participants if name is missing and participants are not loaded
         if (!conversation.name && (!conversation.participants || conversation.participants.length === 0) && !loadingParticipants) {
             setLoadingParticipants(true);
             apiClient.getParticipants(conversation.id)
@@ -89,7 +86,6 @@ export const ConversationListItem: React.FC<ConversationListItemProps> = ({
     );
 };
 
-// ConversationList Component
 interface ConversationListProps {
     conversations: Conversation[];
     selectedId: number | null;
@@ -109,26 +105,22 @@ export const ConversationList: React.FC<ConversationListProps> = ({
     const [searchQuery, setSearchQuery] = useState('');
 
     const filteredConversations = conversations.filter((conv) => {
-        // If search is empty, show all conversations
         if (!searchQuery.trim()) {
             return true;
         }
 
         const query = searchQuery.toLowerCase();
 
-        // Search by conversation name
         if (conv.name?.toLowerCase().includes(query)) {
             return true;
         }
 
-        // For conversations without name (direct chats), search by participant names
         if (!conv.name && conv.participants) {
             return conv.participants.some(p =>
                 p.id !== user?.id && p.name.toLowerCase().includes(query)
             );
         }
 
-        // Search by course code
         if (conv.courseCode?.toLowerCase().includes(query)) {
             return true;
         }
@@ -191,7 +183,6 @@ export const ConversationList: React.FC<ConversationListProps> = ({
     );
 };
 
-// ConversationHeader Component
 interface ConversationHeaderProps {
     conversation: Conversation;
     onSettingsClick?: () => void;
@@ -210,7 +201,6 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
     const [loadingParticipants, setLoadingParticipants] = useState(false);
 
     useEffect(() => {
-        // Load participants if name is missing and participants are not loaded
         if (!conversation.name && (!conversation.participants || conversation.participants.length === 0) && !loadingParticipants) {
             setLoadingParticipants(true);
             apiClient.getParticipants(conversation.id)
@@ -279,7 +269,6 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
     );
 };
 
-// EmptyConversationState Component
 export const EmptyConversationState: React.FC = () => {
     return (
         <div className="h-full flex items-center justify-center text-gray-500 bg-[#F5F7FA]">
@@ -292,7 +281,6 @@ export const EmptyConversationState: React.FC = () => {
     );
 };
 
-// NewConversationModal Component
 interface NewConversationModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -315,7 +303,6 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
     const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
     const [searching, setSearching] = useState(false);
 
-    // Course tab state
     const [courses, setCourses] = useState<any[]>([]);
     const [selectedCourse, setSelectedCourse] = useState<any | null>(null);
     const [customCourseName, setCustomCourseName] = useState('');
@@ -373,7 +360,6 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
 
     const handleCreate = () => {
         if (selectedUsers.length > 0) {
-            // For group chats (more than 1 user), use the conversation name if provided
             const name = selectedUsers.length > 1 ? (conversationName.trim() || undefined) : undefined;
             onCreate(name, selectedUsers.map((u) => u.id));
             setSearchQuery('');
@@ -403,7 +389,6 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
             <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] flex flex-col">
                 <div className="p-6 border-b border-gray-200 bg-[#F5F7FA]">
                     <h2 className="text-xl font-bold text-[#2C3E50] mb-4">New Conversation</h2>
-                    {/* Tabs */}
                     <div className="flex gap-2">
                         <button
                             onClick={() => setActiveTab('users')}
@@ -483,7 +468,7 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
                                             onClick={() => toggleUser(user)}
                                             className="hover:bg-[#D6EAF8] rounded-full p-0.5"
                                         >
-                      ×
+                      Г—
                     </button>
                   </span>
                                 ))}
@@ -517,7 +502,6 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
                         </>
                     ) : (
                         <>
-                            {/* Course Tab Content */}
                             <div className="mb-4">
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                                     Search Courses
@@ -572,7 +556,7 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
                                                 </div>
                                                 <div className="text-sm text-gray-600">{course.name}</div>
                                                 <div className="text-xs text-gray-500 mt-1">
-                                                    {course.instructor} • {course.credits} credits
+                                                    {course.instructor} вЂў {course.credits} credits
                                                 </div>
                                             </button>
                                         ))}
@@ -610,7 +594,6 @@ export const NewConversationModal: React.FC<NewConversationModalProps> = ({
     );
 };
 
-// EditConversationModal Component
 interface EditConversationModalProps {
     isOpen: boolean;
     conversation: Conversation;
@@ -707,7 +690,6 @@ export const EditConversationModal: React.FC<EditConversationModalProps> = ({
     );
 };
 
-// NewCourseConversationModal Component
 interface NewCourseConversationModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -825,7 +807,7 @@ export const NewCourseConversationModal: React.FC<NewCourseConversationModalProp
                                         </div>
                                         <div className="text-sm text-gray-600">{course.name}</div>
                                         <div className="text-xs text-gray-500 mt-1">
-                                            {course.instructor} • {course.credits} credits
+                                            {course.instructor} вЂў {course.credits} credits
                                         </div>
                                     </button>
                                 ))}
@@ -858,7 +840,6 @@ export const NewCourseConversationModal: React.FC<NewCourseConversationModalProp
     );
 };
 
-// AddParticipantModal Component
 interface AddParticipantModalProps {
     isOpen: boolean;
     conversationId: number;
@@ -887,7 +868,6 @@ export const AddParticipantModal: React.FC<AddParticipantModalProps> = ({
         setSearching(true);
         try {
             const results = await apiClient.searchUsers(searchQuery);
-            // Filter out existing participants
             const filtered = results.filter(u => !existingParticipantIds.includes(u.id));
             setSearchResults(filtered);
         } catch (error) {
@@ -974,7 +954,6 @@ export const AddParticipantModal: React.FC<AddParticipantModalProps> = ({
     );
 };
 
-// ParticipantsModal Component
 interface ParticipantsModalProps {
     isOpen: boolean;
     conversationId: number;

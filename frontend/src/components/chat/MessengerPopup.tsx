@@ -1,4 +1,3 @@
-// src/components/chat/MessengerPopup.tsx
 
 import React, { useState } from 'react';
 import { MessageSquare, X, Minimize2, Maximize2, ExternalLink } from 'lucide-react';
@@ -80,9 +79,9 @@ export const MessengerPopup: React.FC<MessengerPopupProps> = ({ isOpen, onClose,
             let messageContent = content;
             if ((!messageContent || messageContent.trim() === '') && formattedAttachments && formattedAttachments.length > 0) {
                 if (formattedAttachments.length === 1) {
-                    messageContent = `📎 ${formattedAttachments[0].fileName}`;
+                    messageContent = `рџ“Ћ ${formattedAttachments[0].fileName}`;
                 } else {
-                    messageContent = `📎 ${formattedAttachments.map(f => f.fileName).join(', ')}`;
+                    messageContent = `рџ“Ћ ${formattedAttachments.map(f => f.fileName).join(', ')}`;
                 }
             }
 
@@ -124,7 +123,6 @@ export const MessengerPopup: React.FC<MessengerPopupProps> = ({ isOpen, onClose,
 
     return (
         <>
-            {/* Overlay */}
             <div
                 className={`fixed inset-0 bg-black bg-opacity-30 z-40 transition-opacity duration-300 ${
                     isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -138,13 +136,11 @@ export const MessengerPopup: React.FC<MessengerPopupProps> = ({ isOpen, onClose,
                 }}
             />
 
-            {/* Messenger Popup */}
             <div className={`fixed bottom-0 right-6 z-50 bg-white rounded-t-lg shadow-2xl transition-all duration-300 ${
                 isMinimized ? 'h-14' : 'h-[600px]'
             } ${
                 isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
             } w-[380px] flex flex-col border border-gray-200`}>
-                {/* Header */}
                 <div className="bg-[#2C3E50] text-white px-4 py-3 rounded-t-lg flex items-center justify-between shadow-md">
                     <div className="flex items-center gap-2">
                         <div className="bg-[#3498DB] p-1.5 rounded-full">
@@ -177,7 +173,6 @@ export const MessengerPopup: React.FC<MessengerPopupProps> = ({ isOpen, onClose,
                     </div>
                 </div>
 
-                {/* Content */}
                 {!isMinimized && (
                     <div className="flex-1 flex overflow-hidden">
                         {showConversationList && (
@@ -225,7 +220,6 @@ export const MessengerPopup: React.FC<MessengerPopupProps> = ({ isOpen, onClose,
                 )}
             </div>
 
-            {/* New Conversation Modal */}
             <NewConversationModal
                 isOpen={showNewConversationModal}
                 onClose={() => setShowNewConversationModal(false)}
@@ -237,7 +231,6 @@ export const MessengerPopup: React.FC<MessengerPopupProps> = ({ isOpen, onClose,
     );
 };
 
-// Floating Button Component
 interface MessengerButtonProps {
     isOpen?: boolean;
     onOpen?: () => void;
@@ -254,28 +247,20 @@ export const MessengerButton: React.FC<MessengerButtonProps> = ({
     const [internalIsOpen, setInternalIsOpen] = useState(false);
     const { conversations } = useConversations();
 
-    // Use external state if provided, otherwise use internal state
     const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
     
-    // Handler for opening/closing popup
     const handleTogglePopup = (open: boolean) => {
         if (externalOnOpen && externalOnClose) {
-            // Controlled mode: use external handlers
             open ? externalOnOpen() : externalOnClose();
         } else {
-            // Uncontrolled mode: use internal state
             setInternalIsOpen(open);
         }
     };
 
-    // Calculate total unread count
     const unreadCount = conversations.reduce((total, conv) => {
         return total + (conv.unreadCount || 0);
     }, 0);
 
-    // Handler for opening full screen
-    // Fallback is provided for backwards compatibility if MessengerButton is used standalone
-    // In the current architecture, externalOnOpenFullScreen should always be provided
     const handleOpenFullScreen = externalOnOpenFullScreen || (() => {
         handleTogglePopup(false);
         console.warn('MessengerButton: No onOpenFullScreen handler provided. This is expected only in standalone mode.');

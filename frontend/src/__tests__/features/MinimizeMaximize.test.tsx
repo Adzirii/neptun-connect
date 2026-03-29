@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-// Mock the contexts
 jest.mock('../../contexts/AuthContext', () => ({
   useAuth: () => ({
     user: { id: 1, name: 'Test User', neptunCode: 'TEST123' },
@@ -56,7 +55,6 @@ describe('Minimize/Maximize Feature', () => {
   test('should render floating button in popup mode initially', () => {
     const { container } = render(<App />);
     
-    // Should show the floating message button initially
     const messageButton = screen.queryByTitle('Open Messages');
     expect(messageButton).toBeInTheDocument();
   });
@@ -64,18 +62,14 @@ describe('Minimize/Maximize Feature', () => {
   test('should toggle between popup and full-screen mode', () => {
     const { container } = render(<App />);
 
-    // Initially should be in popup mode
     const messageButton = screen.queryByTitle('Open Messages');
 
     if (messageButton) {
-      // Click message button to open the popup
       fireEvent.click(messageButton);
 
-      // Should now show the popup, and we can find Open Full Screen
       const fullScreenButton = screen.queryByTitle('Open Full Screen');
       if (fullScreenButton) {
         fireEvent.click(fullScreenButton);
-        // The main layout should become visible
         expect(screen.queryByText('Neptun Connect')).toBeInTheDocument();
       }
     }
@@ -92,7 +86,6 @@ describe('Minimize/Maximize Feature', () => {
       if (fullScreenButton) {
         fireEvent.click(fullScreenButton);
 
-        // Should show minimize button
         const minimizeButton = screen.queryByLabelText('Minimize to popup');
         expect(minimizeButton).toBeInTheDocument();
       }

@@ -58,10 +58,8 @@ public class MessageService {
             parentMessage = getMessageById(request.getParentMessageId());
         }
 
-        // Build content for message
         String messageContent = request.getContent();
 
-        // If content is empty or is default "File attached" text, generate file names list
         if ((messageContent == null || messageContent.trim().isEmpty() || messageContent.equals("File attached"))
             && request.getAttachments() != null && !request.getAttachments().isEmpty()) {
 
@@ -88,7 +86,6 @@ public class MessageService {
 
         message = messageRepository.save(message);
 
-        // Handle attachments if present
         if (request.getAttachments() != null && !request.getAttachments().isEmpty()) {
             final Long savedMessageId = message.getId();
             for (CreateMessageRequest.AttachmentInfo attachInfo : request.getAttachments()) {
@@ -103,7 +100,6 @@ public class MessageService {
                 attachmentRepository.save(attachment);
             }
 
-            // Reload message to ensure attachments are fetched
             message = messageRepository.findByIdWithAttachments(savedMessageId)
                 .orElseThrow(() -> new ResourceNotFoundException("Message", "id", savedMessageId));
         }

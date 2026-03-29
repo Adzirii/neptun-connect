@@ -1,4 +1,3 @@
-// src/App.tsx
 
 import React from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -25,7 +24,6 @@ import { MessageSquare, LogOut, Minimize2 } from 'lucide-react';
 import { Message } from './types/types';
 import apiClient from './api/apiClient';
 
-// ChatWindow Component
 const ChatWindow: React.FC = () => {
     const { user } = useAuth();
     const { selectedConversation, updateConversationData, deleteConversation, addParticipant, getParticipants } = useConversations();
@@ -64,13 +62,12 @@ const ChatWindow: React.FC = () => {
                 fileUrl: file.fileUrl,
             }));
 
-            // If no content provided but has attachments, use file names
             let messageContent = content;
             if ((!messageContent || messageContent.trim() === '') && formattedAttachments && formattedAttachments.length > 0) {
                 if (formattedAttachments.length === 1) {
-                    messageContent = `📎 ${formattedAttachments[0].fileName}`;
+                    messageContent = `рџ“Ћ ${formattedAttachments[0].fileName}`;
                 } else {
-                    messageContent = `📎 ${formattedAttachments.map(f => f.fileName).join(', ')}`;
+                    messageContent = `рџ“Ћ ${formattedAttachments.map(f => f.fileName).join(', ')}`;
                 }
             }
 
@@ -193,7 +190,6 @@ const ChatWindow: React.FC = () => {
     );
 };
 
-// MainLayout Component
 interface MainLayoutProps {
     onMinimize?: () => void;
 }
@@ -208,7 +204,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ onMinimize }) => {
     const handleCreateConversation = async (name: string | undefined, participantIds: number[]) => {
         setCreatingConversation(true);
         try {
-            // Determine type: DIRECT if 1 participant, GROUP if more
             const conversationType = participantIds.length === 1 ? 'DIRECT' : 'GROUP';
             await createConversation({
                 name,
@@ -227,7 +222,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ onMinimize }) => {
         setCreatingConversation(true);
         try {
             await apiClient.createCourseConversation(courseCode, customName);
-            // Reload conversations to show the new one
             await loadConversations();
             close();
         } catch (error: any) {
@@ -240,7 +234,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ onMinimize }) => {
 
     return (
         <div className="h-screen flex flex-col bg-gray-50">
-            {/* Header - Neptun Style */}
             <header className="bg-[#2C3E50] px-6 py-3 flex items-center justify-between flex-shrink-0 shadow-md">
                 <div className="flex items-center gap-3">
                     <MessageSquare className="text-white" size={28} />
@@ -272,9 +265,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ onMinimize }) => {
                 </div>
             </header>
 
-            {/* Main Content */}
             <div className="flex-1 flex overflow-hidden bg-[#F5F7FA]">
-                {/* Conversation List Sidebar */}
                 <div className="w-80 flex-shrink-0 bg-white border-r border-gray-200">
                     <ConversationList
                         conversations={conversations}
@@ -284,13 +275,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ onMinimize }) => {
                     />
                 </div>
 
-                {/* Chat Window */}
                 <div className="flex-1 bg-[#F5F7FA]">
                     <ChatWindow />
                 </div>
             </div>
 
-            {/* New Conversation Modal */}
             <NewConversationModal
                 isOpen={isOpen}
                 onClose={close}
@@ -302,7 +291,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ onMinimize }) => {
     );
 };
 
-// WebSocket-enabled App Content
 const WebSocketEnabledContent: React.FC = () => {
     const { addMessage } = useMessages();
     const [showFullMessenger, setShowFullMessenger] = React.useState(false);
@@ -313,14 +301,11 @@ const WebSocketEnabledContent: React.FC = () => {
         addMessage(message);
     };
 
-    // Handler to switch from full-screen to popup mode
-    // Opens the popup automatically for better UX (user can immediately continue chatting)
     const handleSwitchToPopupMode = () => {
         setShowFullMessenger(false);
         setShowPopup(true);
     };
 
-    // Handler to switch from popup to full-screen mode
     const handleSwitchToFullScreen = () => {
         setShowFullMessenger(true);
         setShowPopup(false);
@@ -360,7 +345,6 @@ const WebSocketEnabledContent: React.FC = () => {
     );
 };
 
-// Main App Content with all providers
 const AppContent: React.FC = () => {
     const { isAuthenticated, loading } = useAuth();
 
@@ -388,7 +372,6 @@ const AppContent: React.FC = () => {
     );
 };
 
-// Root App Component
 const App: React.FC = () => {
     return (
         <AuthProvider>

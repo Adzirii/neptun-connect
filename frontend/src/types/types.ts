@@ -12,7 +12,6 @@ export interface User {
     online?: boolean;
 }
 
-// Message Types
 export enum MessageType {
     TEXT = 'TEXT',
     FILE = 'FILE',
@@ -64,7 +63,6 @@ export interface CreateMessageRequest {
     }>;
 }
 
-// Conversation Types
 export enum ConversationType {
     DIRECT = 'DIRECT',
     GROUP = 'GROUP',
@@ -95,7 +93,6 @@ export interface CreateConversationRequest {
     participantIds: number[];
 }
 
-// Course Types
 export interface Course {
     id: number;
     courseCode: string;
@@ -106,7 +103,6 @@ export interface Course {
     status: string;
 }
 
-// Pagination
 export interface PageResponse<T> {
     content: T[];
     pageable?: {
@@ -119,7 +115,6 @@ export interface PageResponse<T> {
     first?: boolean;
 }
 
-// Auth Types
 export interface LoginRequest {
     neptunCode: string;
     password: string;
@@ -132,7 +127,6 @@ export interface AuthResponse {
     student: User;
 }
 
-// Error Types
 export interface ValidationError {
     [field: string]: string;
 }
@@ -146,7 +140,6 @@ export interface ErrorResponse {
     validationErrors?: ValidationError;
 }
 
-// API Response Types
 export type ApiResponse<T> = {
     success: true;
     data: T;

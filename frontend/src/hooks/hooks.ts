@@ -1,4 +1,3 @@
-// src/hooks/hooks.ts
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { User } from '../types/types';

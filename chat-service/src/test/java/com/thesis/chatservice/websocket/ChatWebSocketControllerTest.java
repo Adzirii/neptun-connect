@@ -39,7 +39,6 @@ public class ChatWebSocketControllerTest {
 
     @BeforeEach
     public void setup() {
-        // Create test user
         testUser = User.builder()
             .neptunCode("TEST01")
             .name("Test User")
@@ -48,10 +47,8 @@ public class ChatWebSocketControllerTest {
             .build();
         testUser = userRepository.save(testUser);
 
-        // Generate JWT token
         jwtToken = jwtUtil.generateToken(testUser.getNeptunCode(), testUser.getName());
 
-        // Setup WebSocket client
         stompClient = new WebSocketStompClient(new StandardWebSocketClient());
         stompClient.setMessageConverter(new MappingJackson2MessageConverter());
     }
@@ -65,7 +62,6 @@ public class ChatWebSocketControllerTest {
 
     @Test
     public void testWebSocketConnectionWithAuthentication() throws Exception {
-        // Arrange
         WebSocketHttpHeaders headers = new WebSocketHttpHeaders();
         headers.add("Authorization", "Bearer " + jwtToken);
 
@@ -75,7 +71,6 @@ public class ChatWebSocketControllerTest {
         CompletableFuture<StompSession> sessionFuture = new CompletableFuture<>();
         CompletableFuture<Boolean> connectedFuture = new CompletableFuture<>();
 
-        // Act
         stompClient.connectAsync(
             "ws://localhost:" + port + "/ws",
             headers,
@@ -113,7 +108,6 @@ public class ChatWebSocketControllerTest {
             }
         );
 
-        // Assert
         Boolean connected = connectedFuture.get(10, TimeUnit.SECONDS);
         assertTrue(connected);
 
@@ -121,16 +115,13 @@ public class ChatWebSocketControllerTest {
         assertNotNull(session);
         assertTrue(session.isConnected());
 
-        // Cleanup
         session.disconnect();
     }
 
     @Test
     public void testWebSocketConnectionWithoutAuthentication() throws Exception {
-        // Arrange
         CompletableFuture<Throwable> errorFuture = new CompletableFuture<>();
 
-        // Act
         stompClient.connectAsync(
             "ws://localhost:" + port + "/ws",
             new StompSessionHandlerAdapter() {
@@ -144,15 +135,12 @@ public class ChatWebSocketControllerTest {
             }
         );
 
-        // Assert
         Throwable exception = errorFuture.get(10, TimeUnit.SECONDS);
         assertNotNull(exception);
-        // Connection should fail without authentication
     }
 
     @Test
     public void testSubscribeToConversation() throws Exception {
-        // Arrange
         Long conversationId = 1L;
         WebSocketHttpHeaders headers = new WebSocketHttpHeaders();
         headers.add("Authorization", "Bearer " + jwtToken);
@@ -163,7 +151,6 @@ public class ChatWebSocketControllerTest {
         CompletableFuture<StompSession> sessionFuture = new CompletableFuture<>();
         CompletableFuture<Boolean> subscribedFuture = new CompletableFuture<>();
 
-        // Act
         stompClient.connectAsync(
             "ws://localhost:" + port + "/ws",
             headers,
@@ -181,7 +168,6 @@ public class ChatWebSocketControllerTest {
 
         StompSession session = sessionFuture.get(10, TimeUnit.SECONDS);
 
-        // Subscribe to conversation topic
         StompSession.Subscription subscription = session.subscribe(
             "/topic/conversations/" + conversationId,
             new StompFrameHandler() {
@@ -197,11 +183,9 @@ public class ChatWebSocketControllerTest {
             }
         );
 
-        // Assert
         assertNotNull(subscription);
         assertTrue(session.isConnected());
 
-        // Cleanup
         subscription.unsubscribe();
         session.disconnect();
     }

@@ -516,7 +516,6 @@ public class MockDataRepository {
     }
 
     private void createEnrollments() {
-        // John Doe (ABC123) - Student ID 1
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(1L).courseId(1L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(85).build());
@@ -530,7 +529,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(1L).courseId(5L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(82).build());
 
-        // Jane Smith (DEF456) - Student ID 2
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(2L).courseId(1L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(95).build());
@@ -541,7 +539,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(2L).courseId(10L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(89).build());
 
-        // Peter Nagy (GHI789) - Student ID 3
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(3L).courseId(2L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(78).build());
@@ -555,7 +552,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(3L).courseId(9L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(83).build());
 
-        // Nikita Liubov (BLOMOE) - Student ID 4
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(4L).courseId(1L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(90).build());
@@ -569,7 +565,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(4L).courseId(6L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(88).build());
 
-        // Anna Horvath (JKL012) - Student ID 5
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(5L).courseId(1L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(93).build());
@@ -583,7 +578,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(5L).courseId(10L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(89).build());
 
-        // Balazs Szabo (MNO345) - Student ID 6
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(6L).courseId(2L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(84).build());
@@ -597,7 +591,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(6L).courseId(6L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(83).build());
 
-        // Eva Kiss (PQR678) - Student ID 7
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(7L).courseId(1L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(97).build());
@@ -608,7 +601,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(7L).courseId(10L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(95).build());
 
-        // Gabor Farkas (STU901) - Student ID 8
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(8L).courseId(5L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(75).build());
@@ -619,7 +611,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(8L).courseId(9L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(79).build());
 
-        // Katalin Molnar (VWX234) - Student ID 9
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(9L).courseId(2L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(91).build());
@@ -633,7 +624,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(9L).courseId(8L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(87).build());
 
-        // Laszlo Varga (YZA567) - Student ID 10
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(10L).courseId(1L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(86).build());
@@ -644,7 +634,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(10L).courseId(10L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(88).build());
 
-        // Zsofia Nemeth (BCD890) - Student ID 11
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(11L).courseId(1L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(93).build());
@@ -658,7 +647,6 @@ public class MockDataRepository {
                 .id(enrollmentIdCounter++).studentId(11L).courseId(10L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(94).build());
 
-        // Tamas Kovacs (EFG123) - Student ID 12
         enrollments.put(enrollmentIdCounter, Enrollment.builder()
                 .id(enrollmentIdCounter++).studentId(12L).courseId(3L).semester("2024/2025 Fall")
                 .status("ACTIVE").enrollmentDate(LocalDate.of(2024, 9, 1)).attendance(80).build());
@@ -674,7 +662,6 @@ public class MockDataRepository {
     }
 
     private void createTimetableEntries() {
-        // CS101 - Introduction to Programming
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(1L).courseCode("CS101")
                 .courseName("Introduction to Programming").instructor("Dr. Anna Kovacs")
@@ -686,7 +673,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.WEDNESDAY).startTime(LocalTime.of(8, 0)).endTime(LocalTime.of(10, 0))
                 .room("A301").building("Building A").type("Lab").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // CS201 - Data Structures and Algorithms
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(2L).courseCode("CS201")
                 .courseName("Data Structures and Algorithms").instructor("Dr. Janos Toth")
@@ -698,7 +684,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.THURSDAY).startTime(LocalTime.of(10, 0)).endTime(LocalTime.of(12, 0))
                 .room("B205").building("Building B").type("Lab").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // CS301 - Database Systems
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(3L).courseCode("CS301")
                 .courseName("Database Systems").instructor("Dr. Eva Szabo")
@@ -710,7 +695,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.FRIDAY).startTime(LocalTime.of(14, 0)).endTime(LocalTime.of(16, 0))
                 .room("A201").building("Building A").type("Lab").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // MATH101 - Calculus I
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(4L).courseCode("MATH101")
                 .courseName("Calculus I").instructor("Dr. Maria Kiss")
@@ -722,7 +706,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.THURSDAY).startTime(LocalTime.of(8, 0)).endTime(LocalTime.of(10, 0))
                 .room("C101").building("Building C").type("Practice").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // CS401 - Software Engineering
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(5L).courseCode("CS401")
                 .courseName("Software Engineering").instructor("Dr. Peter Horvath")
@@ -734,7 +717,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.FRIDAY).startTime(LocalTime.of(10, 0)).endTime(LocalTime.of(12, 0))
                 .room("B301").building("Building B").type("Seminar").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // CS202 - Operating Systems
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(6L).courseCode("CS202")
                 .courseName("Operating Systems").instructor("Dr. Gabor Nagy")
@@ -746,7 +728,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.WEDNESDAY).startTime(LocalTime.of(10, 0)).endTime(LocalTime.of(12, 0))
                 .room("A305").building("Building A").type("Lab").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // CS302 - Computer Networks
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(7L).courseCode("CS302")
                 .courseName("Computer Networks").instructor("Dr. Katalin Farkas")
@@ -758,7 +739,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.THURSDAY).startTime(LocalTime.of(14, 0)).endTime(LocalTime.of(16, 0))
                 .room("B201").building("Building B").type("Lab").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // MATH201 - Linear Algebra
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(8L).courseCode("MATH201")
                 .courseName("Linear Algebra").instructor("Dr. Zoltan Varga")
@@ -770,7 +750,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.FRIDAY).startTime(LocalTime.of(8, 0)).endTime(LocalTime.of(10, 0))
                 .room("C201").building("Building C").type("Practice").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // CS501 - Artificial Intelligence
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(9L).courseCode("CS501")
                 .courseName("Artificial Intelligence").instructor("Dr. Laszlo Nemeth")
@@ -782,7 +761,6 @@ public class MockDataRepository {
                 .dayOfWeek(DayOfWeek.THURSDAY).startTime(LocalTime.of(16, 0)).endTime(LocalTime.of(18, 0))
                 .room("A401").building("Building A").type("Lab").weekNumber(1).semester("2024/2025 Fall").build());
 
-        // CS303 - Web Development
         timetableEntries.put(timetableIdCounter, TimetableEntry.builder()
                 .id(timetableIdCounter++).courseId(10L).courseCode("CS303")
                 .courseName("Web Development").instructor("Dr. Eva Molnar")
@@ -796,70 +774,60 @@ public class MockDataRepository {
     }
 
     private void createExams() {
-        // CS101 - Introduction to Programming
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(1L).courseCode("CS101")
                 .courseName("Introduction to Programming").examType("WRITTEN")
                 .examDate(LocalDateTime.of(2025, 1, 15, 10, 0)).location("Building A").room("A Hall")
                 .duration(120).instructor("Dr. Anna Kovacs").status("SCHEDULED")
                 .maxStudents(100).registeredStudents(85).build());
 
-        // CS201 - Data Structures and Algorithms
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(2L).courseCode("CS201")
                 .courseName("Data Structures and Algorithms").examType("WRITTEN")
                 .examDate(LocalDateTime.of(2025, 1, 18, 14, 0)).location("Building B").room("B Hall")
                 .duration(150).instructor("Dr. Janos Toth").status("SCHEDULED")
                 .maxStudents(80).registeredStudents(72).build());
 
-        // CS301 - Database Systems
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(3L).courseCode("CS301")
                 .courseName("Database Systems").examType("WRITTEN")
                 .examDate(LocalDateTime.of(2025, 1, 20, 10, 0)).location("Building A").room("A Hall")
                 .duration(120).instructor("Dr. Eva Szabo").status("SCHEDULED")
                 .maxStudents(90).registeredStudents(78).build());
 
-        // MATH101 - Calculus I
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(4L).courseCode("MATH101")
                 .courseName("Calculus I").examType("WRITTEN")
                 .examDate(LocalDateTime.of(2025, 1, 22, 9, 0)).location("Building C").room("C Hall")
                 .duration(180).instructor("Dr. Maria Kiss").status("SCHEDULED")
                 .maxStudents(150).registeredStudents(142).build());
 
-        // CS401 - Software Engineering
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(5L).courseCode("CS401")
                 .courseName("Software Engineering").examType("PROJECT")
                 .examDate(LocalDateTime.of(2025, 1, 25, 14, 0)).location("Building B").room("B301")
                 .duration(90).instructor("Dr. Peter Horvath").status("SCHEDULED")
                 .maxStudents(70).registeredStudents(65).build());
 
-        // CS202 - Operating Systems
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(6L).courseCode("CS202")
                 .courseName("Operating Systems").examType("WRITTEN")
                 .examDate(LocalDateTime.of(2025, 1, 23, 10, 0)).location("Building A").room("A Hall")
                 .duration(150).instructor("Dr. Gabor Nagy").status("SCHEDULED")
                 .maxStudents(85).registeredStudents(79).build());
 
-        // CS302 - Computer Networks
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(7L).courseCode("CS302")
                 .courseName("Computer Networks").examType("WRITTEN")
                 .examDate(LocalDateTime.of(2025, 1, 27, 14, 0)).location("Building B").room("B Hall")
                 .duration(120).instructor("Dr. Katalin Farkas").status("SCHEDULED")
                 .maxStudents(75).registeredStudents(68).build());
 
-        // MATH201 - Linear Algebra
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(8L).courseCode("MATH201")
                 .courseName("Linear Algebra").examType("WRITTEN")
                 .examDate(LocalDateTime.of(2025, 1, 29, 10, 0)).location("Building C").room("C Hall")
                 .duration(150).instructor("Dr. Zoltan Varga").status("SCHEDULED")
                 .maxStudents(120).registeredStudents(110).build());
 
-        // CS501 - Artificial Intelligence
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(9L).courseCode("CS501")
                 .courseName("Artificial Intelligence").examType("PROJECT")
                 .examDate(LocalDateTime.of(2025, 1, 30, 16, 0)).location("Building A").room("A401")
                 .duration(120).instructor("Dr. Laszlo Nemeth").status("SCHEDULED")
                 .maxStudents(60).registeredStudents(58).build());
 
-        // CS303 - Web Development
         exams.put(examIdCounter, Exam.builder().id(examIdCounter++).courseId(10L).courseCode("CS303")
                 .courseName("Web Development").examType("PROJECT")
                 .examDate(LocalDateTime.of(2025, 2, 1, 14, 0)).location("Building B").room("B101")
@@ -868,7 +836,6 @@ public class MockDataRepository {
     }
 
     private void createGrades() {
-        // John Doe (Student ID 1) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(1L).courseId(4L)
                 .courseCode("MATH101").courseName("Calculus I").credits(4).grade("A").gradeValue(5)
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
@@ -878,13 +845,11 @@ public class MockDataRepository {
                 .gradeDate(LocalDate.of(2024, 12, 20)).semester("2024/2025 Fall")
                 .instructor("Dr. Anna Kovacs").examType("WRITTEN").build());
 
-        // Jane Smith (Student ID 2) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(2L).courseId(4L)
                 .courseCode("MATH101").courseName("Calculus I").credits(4).grade("A+").gradeValue(5)
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Peter Nagy (Student ID 3) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(3L).courseId(1L)
                 .courseCode("CS101").courseName("Introduction to Programming").credits(5).grade("B").gradeValue(4)
                 .gradeDate(LocalDate.of(2023, 12, 18)).semester("2023/2024 Fall")
@@ -894,7 +859,6 @@ public class MockDataRepository {
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Nikita Liubov (Student ID 4) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(4L).courseId(4L)
                 .courseCode("MATH101").courseName("Calculus I").credits(4).grade("B+").gradeValue(4)
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
@@ -904,13 +868,11 @@ public class MockDataRepository {
                 .gradeDate(LocalDate.of(2024, 12, 20)).semester("2024/2025 Fall")
                 .instructor("Dr. Anna Kovacs").examType("WRITTEN").build());
 
-        // Anna Horvath (Student ID 5) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(5L).courseId(4L)
                 .courseCode("MATH101").courseName("Calculus I").credits(4).grade("A").gradeValue(5)
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Balazs Szabo (Student ID 6) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(6L).courseId(1L)
                 .courseCode("CS101").courseName("Introduction to Programming").credits(5).grade("B+").gradeValue(4)
                 .gradeDate(LocalDate.of(2023, 12, 18)).semester("2023/2024 Fall")
@@ -920,13 +882,11 @@ public class MockDataRepository {
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Eva Kiss (Student ID 7) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(7L).courseId(4L)
                 .courseCode("MATH101").courseName("Calculus I").credits(4).grade("A+").gradeValue(5)
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Gabor Farkas (Student ID 8) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(8L).courseId(1L)
                 .courseCode("CS101").courseName("Introduction to Programming").credits(5).grade("B-").gradeValue(3)
                 .gradeDate(LocalDate.of(2022, 12, 20)).semester("2022/2023 Fall")
@@ -940,7 +900,6 @@ public class MockDataRepository {
                 .gradeDate(LocalDate.of(2023, 12, 22)).semester("2023/2024 Fall")
                 .instructor("Dr. Eva Szabo").examType("WRITTEN").build());
 
-        // Katalin Molnar (Student ID 9) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(9L).courseId(1L)
                 .courseCode("CS101").courseName("Introduction to Programming").credits(5).grade("A").gradeValue(5)
                 .gradeDate(LocalDate.of(2023, 12, 18)).semester("2023/2024 Fall")
@@ -950,19 +909,16 @@ public class MockDataRepository {
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Laszlo Varga (Student ID 10) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(10L).courseId(4L)
                 .courseCode("MATH101").courseName("Calculus I").credits(4).grade("B+").gradeValue(4)
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Zsofia Nemeth (Student ID 11) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(11L).courseId(4L)
                 .courseCode("MATH101").courseName("Calculus I").credits(4).grade("A").gradeValue(5)
                 .gradeDate(LocalDate.of(2024, 6, 15)).semester("2023/2024 Spring")
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
 
-        // Tamas Kovacs (Student ID 12) grades
         grades.put(gradeIdCounter, Grade.builder().id(gradeIdCounter++).studentId(12L).courseId(1L)
                 .courseCode("CS101").courseName("Introduction to Programming").credits(5).grade("B").gradeValue(4)
                 .gradeDate(LocalDate.of(2023, 12, 18)).semester("2023/2024 Fall")
@@ -977,7 +933,6 @@ public class MockDataRepository {
                 .instructor("Dr. Maria Kiss").examType("WRITTEN").build());
     }
 
-    // Repository methods
     public Optional<Student> findStudentByNeptunCode(String neptunCode) {
         return Optional.ofNullable(studentsByNeptunCode.get(neptunCode));
     }

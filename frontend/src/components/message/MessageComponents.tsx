@@ -1,4 +1,3 @@
-// src/components/message/MessageComponents.tsx
 
 import React, { useState, useRef } from 'react';
 import { Message } from '../../types/types';
@@ -7,7 +6,6 @@ import { Send, Check, CheckCheck, MoreVertical, Edit2, Trash2, Copy, Reply, X, P
 import { useClickOutside } from '../../hooks/hooks';
 import apiClient from '../../api/apiClient';
 
-// MediaPreviewModal Component
 interface MediaPreviewModalProps {
     fileUrl: string;
     fileName: string;
@@ -91,7 +89,6 @@ const MediaPreviewModal: React.FC<MediaPreviewModalProps> = ({
     );
 };
 
-// MessageBubble Component
 interface MessageBubbleProps {
     message: Message;
     currentUserId: number;
@@ -375,7 +372,6 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
     );
 };
 
-// MessageInput Component
 interface MessageInputProps {
     onSend: (content: string, parentMessageId?: number, attachments?: any[]) => void;
     disabled?: boolean;
@@ -525,7 +521,6 @@ export const MessageInput: React.FC<MessageInputProps> = ({
     );
 };
 
-// MessageList Component
 interface MessageListProps {
     messages: Message[];
     currentUserId: number;
@@ -591,7 +586,6 @@ export const MessageList: React.FC<MessageListProps> = ({
     );
 };
 
-// DateSeparator Component
 interface DateSeparatorProps {
     date: string;
 }

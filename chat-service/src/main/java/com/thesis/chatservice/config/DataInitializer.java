@@ -36,7 +36,6 @@ public class DataInitializer implements ApplicationRunner {
     @Value("${neptun.api.base-url}")
     private String neptunBaseUrl;
 
-    // List of all Neptun codes to sync with their default passwords
     private static final Map<String, String> NEPTUN_CREDENTIALS = new HashMap<>() {{
         put("ABC123", "password");
         put("DEF456", "password");
@@ -57,7 +56,6 @@ public class DataInitializer implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         log.info("Starting data initialization...");
 
-        // Check if users are already synced
         long existingUsersCount = userRepository.count();
 
         if (existingUsersCount >= NEPTUN_CREDENTIALS.size()) {
@@ -75,7 +73,6 @@ public class DataInitializer implements ApplicationRunner {
             String password = entry.getValue();
 
             try {
-                // Get authentication token first
                 String token = authenticateAndGetToken(neptunCode, password);
 
                 if (token != null) {
@@ -84,13 +81,11 @@ public class DataInitializer implements ApplicationRunner {
                     log.info("Successfully synced student: {} ({}/{})",
                         neptunCode, successCount + failCount, NEPTUN_CREDENTIALS.size());
                 } else {
-                    // If authentication fails, create minimal user
                     createMinimalUser(neptunCode);
                     failCount++;
                     log.warn("Failed to authenticate {}, created minimal user", neptunCode);
                 }
 
-                // Add small delay to avoid overwhelming the Neptun API
                 Thread.sleep(200);
 
             } catch (Exception e) {

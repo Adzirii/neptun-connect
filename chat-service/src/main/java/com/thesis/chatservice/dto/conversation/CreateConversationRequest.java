@@ -17,7 +17,6 @@ public class CreateConversationRequest {
 
     private String name;
 
-    //TODO: make an enum
     @NotNull(message = "Conversation type is required")
     private String type;
 

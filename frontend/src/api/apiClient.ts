@@ -45,7 +45,7 @@ class ApiClient {
         const token = this.getToken();
         if (token) {
             headers['Authorization'] = `Bearer ${token}`;
-            headers['X-Neptun-Token'] = token; // Also send as Neptun token for course APIs
+            headers['X-Neptun-Token'] = token;
         }
 
         return headers;
@@ -92,7 +92,6 @@ class ApiClient {
         }
     }
 
-    // Authentication
     async login(credentials: LoginRequest): Promise<AuthResponse> {
         const response = await fetch(`${config.neptunApiUrl}/auth/login`, {
             method: 'POST',
@@ -119,7 +118,6 @@ class ApiClient {
         });
     }
 
-    // Users
     async getUsers(): Promise<User[]> {
         return this.request<User[]>(`${config.apiBaseUrl}/users`);
     }
@@ -140,7 +138,6 @@ class ApiClient {
         });
     }
 
-    // Conversations
     async getConversations(): Promise<Conversation[]> {
         return this.request<Conversation[]>(`${config.apiBaseUrl}/conversations`);
     }
@@ -219,12 +216,10 @@ class ApiClient {
         );
     }
 
-    // Courses (Neptun API)
     async getEnrolledCourses(): Promise<any[]> {
         return this.request<any[]>(`${config.neptunApiUrl}/courses/enrolled`);
     }
 
-    // File upload
     async uploadFile(file: File): Promise<{
         filename: string;
         originalFilename: string;
@@ -251,7 +246,6 @@ class ApiClient {
         return await response.json();
     }
 
-    // Messages
     async getMessages(
         conversationId: number,
         page: number = 0,

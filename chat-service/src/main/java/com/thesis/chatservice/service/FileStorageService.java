@@ -20,11 +20,10 @@ public class FileStorageService {
     @Value("${file.upload-dir:uploads}")
     private String uploadDir;
 
-    @Value("${file.max-size:10485760}") // 10MB default
+    @Value("${file.max-size:10485760}")
     private long maxFileSize;
 
     public String storeFile(MultipartFile file) throws IOException {
-        // Validate file
         if (file.isEmpty()) {
             throw new IOException("Failed to store empty file");
         }
@@ -33,10 +32,8 @@ public class FileStorageService {
             throw new IOException("File size exceeds maximum allowed size");
         }
 
-        // Get original filename
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
 
-        // Generate unique filename
         String fileExtension = "";
         int dotIndex = originalFilename.lastIndexOf('.');
         if (dotIndex > 0) {
@@ -45,13 +42,11 @@ public class FileStorageService {
 
         String uniqueFilename = UUID.randomUUID().toString() + fileExtension;
 
-        // Create upload directory if it doesn't exist
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
 
-        // Copy file to the target location
         Path targetLocation = uploadPath.resolve(uniqueFilename);
         Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 

@@ -36,10 +36,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .authorizeHttpRequests(auth -> auth
-                        // Public endpoints
                         .requestMatchers(
                                 "/api/auth/**",
-//                                "/api/students/**",
                                 "/api/test/public",
                                 "/api-docs/**",
                                 "/swagger-ui/**",
@@ -48,7 +46,6 @@ public class SecurityConfig {
                                 "/swagger-resources/**",
                                 "/webjars/**"
                         ).permitAll()
-                        // All other /api/** endpoints require authentication
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
                 )

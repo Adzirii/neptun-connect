@@ -1,10 +1,8 @@
-// src/components/user/UserComponents.tsx
 
 import React from 'react';
 import { User } from '../../types/types';
 import { getInitials, stringToColor, isUserOnline } from '../../utils/utils';
 
-// UserAvatar Component
 interface UserAvatarProps {
     user: User;
     size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -60,7 +58,6 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
     );
 };
 
-// UserListItem Component
 interface UserListItemProps {
     user: User;
     onClick?: (user: User) => void;
@@ -90,7 +87,6 @@ export const UserListItem: React.FC<UserListItemProps> = ({
     );
 };
 
-// UserList Component
 interface UserListProps {
     users: User[];
     onUserClick?: (user: User) => void;
@@ -136,7 +132,6 @@ export const UserList: React.FC<UserListProps> = ({
     );
 };
 
-// UserSearchInput Component
 interface UserSearchInputProps {
     value: string;
     onChange: (value: string) => void;
@@ -182,7 +177,6 @@ export const UserSearchInput: React.FC<UserSearchInputProps> = ({
     );
 };
 
-// UserProfile Component
 interface UserProfileProps {
     user: User;
     onClose?: () => void;

@@ -15,6 +15,6 @@ public class CreateCourseConversationRequest {
     @NotBlank(message = "Course code is required")
     private String courseCode;
 
-    private String name; // Optional custom name, defaults to "{courseName} chat"
+    private String name;
 }
 

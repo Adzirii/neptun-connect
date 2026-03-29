@@ -44,7 +44,6 @@ public class ConversationService {
 
     @Transactional
     public Conversation createConversation(CreateConversationRequest request, User creator) {
-        // For DIRECT chats, check if conversation already exists
         if ("DIRECT".equals(request.getType()) && request.getParticipantIds().size() == 1) {
             Long otherUserId = request.getParticipantIds().get(0);
             Optional<Conversation> existingConversation = conversationRepository
@@ -57,11 +56,8 @@ public class ConversationService {
             }
         }
 
-        // Determine conversation name
         String conversationName = request.getName();
 
-        // For DIRECT chats, don't set a name - let frontend display other user's name
-        // For GROUP chats, require a name if more than 1 participant
         if (conversationName == null || conversationName.trim().isEmpty()) {
             conversationName = null;
         }
@@ -107,33 +103,28 @@ public class ConversationService {
 
     @Transactional
     public Conversation createCourseConversation(String courseCode, String customName, User creator, String neptunToken) {
-        // Check if course conversation already exists
         Optional<Conversation> existingConversation = conversationRepository.findByCourseCode(courseCode);
         if (existingConversation.isPresent()) {
             log.warn("Course conversation already exists for course: {}", courseCode);
             throw new BadRequestException("Course conversation already exists for this course");
         }
 
-        // Get enrolled courses to find the course name
         List<NeptunCourseDto> enrolledCourses = neptunApiClient.getEnrolledCourses(neptunToken);
         NeptunCourseDto courseDto = enrolledCourses.stream()
             .filter(c -> c.getCourseCode().equals(courseCode))
             .findFirst()
             .orElseThrow(() -> new BadRequestException("You are not enrolled in this course"));
 
-        // Get all students enrolled in this course
         List<NeptunCourseStudentDto> courseStudents = neptunApiClient.getCourseStudents(courseCode, neptunToken);
 
         if (courseStudents.isEmpty()) {
             throw new BadRequestException("No students found for this course");
         }
 
-        // Determine conversation name
         String conversationName = customName != null && !customName.trim().isEmpty()
             ? customName
             : courseDto.getName() + " chat";
 
-        // Create conversation
         Conversation conversation = Conversation.builder()
             .name(conversationName)
             .type(Conversation.ConversationType.COURSE)
@@ -145,14 +136,11 @@ public class ConversationService {
         conversation = conversationRepository.save(conversation);
         log.info("Created course conversation for: {} with name: {}", courseCode, conversationName);
 
-        // Add creator as owner
         addParticipant(conversation.getId(), creator.getId(), ConversationParticipant.ParticipantRole.OWNER);
 
-        // Add all course students as members
         int addedCount = 0;
         for (NeptunCourseStudentDto student : courseStudents) {
             try {
-                // Find user by neptun code
                 User user = userService.getUserByNeptunCode(student.getNeptunCode());
                 if (user != null && !user.getId().equals(creator.getId())) {
                     addParticipant(conversation.getId(), user.getId(), ConversationParticipant.ParticipantRole.MEMBER);
@@ -238,10 +226,9 @@ public class ConversationService {
 
     @Transactional
     public void deleteConversation(Long conversationId, User user) {
-        getConversationById(conversationId); // Validate conversation exists
+        getConversationById(conversationId);
         validateUserAccess(conversationId, user.getId());
 
-        // Soft delete: mark all participants as inactive
         List<ConversationParticipant> participants = getConversationParticipants(conversationId);
         for (ConversationParticipant participant : participants) {
             participant.setIsActive(false);

@@ -42,7 +42,6 @@ public class ChatWebSocketController {
             Message message = messageService.createMessage(request, user);
             MessageDto messageDto = mapToDto(message);
 
-            // Broadcast to all subscribers of this conversation
             messagingTemplate.convertAndSend(
                 "/topic/conversations/" + conversationId,
                 messageDto
@@ -66,7 +65,6 @@ public class ChatWebSocketController {
         payload.setUserId(user.getId());
         payload.setUserName(user.getName());
 
-        // Broadcast typing indicator to conversation participants
         messagingTemplate.convertAndSend(
             "/topic/conversations/" + conversationId + "/typing",
             payload
@@ -74,7 +72,6 @@ public class ChatWebSocketController {
     }
 
     private MessageDto mapToDto(Message message) {
-        // Implementation similar to MessageController
         return MessageDto.builder()
             .id(message.getId())
             .conversationId(message.getConversation().getId())

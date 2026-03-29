@@ -1,4 +1,3 @@
-// File: neptun-mock/src/main/java/com/thesis/neptunmock/service/AuthenticationService.java
 package com.thesis.neptunmock.service;
 
 import com.thesis.neptunmock.dto.auth.LoginRequest;

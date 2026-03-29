@@ -78,14 +78,14 @@ export const stringToColor = (str: string): string => {
     }
 
     const colors = [
-        '#3B82F6', // blue
-        '#8B5CF6', // purple
-        '#EC4899', // pink
-        '#10B981', // green
-        '#F59E0B', // amber
-        '#EF4444', // red
-        '#6366F1', // indigo
-        '#14B8A6', // teal
+        '#3B82F6',
+        '#8B5CF6',
+        '#EC4899',
+        '#10B981',
+        '#F59E0B',
+        '#EF4444',
+        '#6366F1',
+        '#14B8A6',
     ];
 
     return colors[Math.abs(hash) % colors.length];

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ChatMessagePayload {
-    private String type; // MESSAGE, TYPING, READ
+    private String type;
     private Long conversationId;
     private String content;
     private Long messageId;

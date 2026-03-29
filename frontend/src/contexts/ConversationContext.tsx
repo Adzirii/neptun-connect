@@ -1,4 +1,3 @@
-// src/contexts/ConversationContext.tsx
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Conversation, CreateConversationRequest, User } from '../types/types';
