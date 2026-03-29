@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * CourseController.java
- * REST Controller for course endpoints
- */
+
 @RestController
 @RequestMapping("/api/courses")
 @RequiredArgsConstructor

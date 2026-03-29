@@ -305,8 +305,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ onMinimize }) => {
 // WebSocket-enabled App Content
 const WebSocketEnabledContent: React.FC = () => {
     const { addMessage } = useMessages();
-    const [showFullMessenger, setShowFullMessenger] = React.useState(true);
-    const [showPopup, setShowPopup] = React.useState(false);
+    const [showFullMessenger, setShowFullMessenger] = React.useState(false);
+    const [showPopup, setShowPopup] = React.useState(true);
 
     const handleMessageReceived = (message: Message) => {
         console.log('New message received via WebSocket:', message);
