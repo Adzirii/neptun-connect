@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Conversation, User } from '../../types/types';
 import { formatRelativeTime, getInitials, stringToColor, truncateText, generateConversationName } from '../../utils/utils';
-import { MessageSquare, Plus, Search, MoreVertical, Edit, Trash2, UserPlus, Settings } from 'lucide-react';
+import { MessageSquare, Plus, Search, MoreVertical, Edit, Trash2, UserPlus, Settings, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import apiClient from '../../api/apiClient';
 
@@ -188,6 +188,7 @@ interface ConversationHeaderProps {
     onSettingsClick?: () => void;
     onAddParticipantClick?: () => void;
     onViewParticipants?: () => void;
+    onBackClick?: () => void;
 }
 
 export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
@@ -195,6 +196,7 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
                                                                           onSettingsClick,
                                                                           onAddParticipantClick,
                                                                           onViewParticipants,
+                                                                          onBackClick,
                                                                       }) => {
     const { user } = useAuth();
     const [participants, setParticipants] = useState<User[]>(conversation.participants || []);
@@ -224,6 +226,15 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
     return (
         <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-white shadow-sm">
             <div className="flex items-center gap-3">
+                {onBackClick && (
+                    <button
+                        onClick={onBackClick}
+                        className="p-1 hover:bg-[#E8F4FD] rounded-lg transition-colors text-[#2C3E50]"
+                        aria-label="Back"
+                    >
+                        <ArrowLeft size={20} />
+                    </button>
+                )}
                 <div
                     className="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold shadow-sm"
                     style={{ backgroundColor: stringToColor(displayName) }}

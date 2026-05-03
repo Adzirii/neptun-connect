@@ -191,14 +191,10 @@ export const MessengerPopup: React.FC<MessengerPopupProps> = ({ isOpen, onClose,
 
                         {!showConversationList && selectedConversation && (
                             <div className="flex-1 flex flex-col">
-                                <div
-                                    className="cursor-pointer"
-                                    onClick={() => setShowConversationList(true)}
-                                >
-                                    <ConversationHeader
-                                        conversation={selectedConversation}
-                                    />
-                                </div>
+                                <ConversationHeader
+                                    conversation={selectedConversation}
+                                    onBackClick={() => setShowConversationList(true)}
+                                />
                                 <div className="flex-1 overflow-hidden">
                                     <MessageList
                                         messages={messages}
